@@ -1,14 +1,18 @@
 .friend-details{
     border: 1px solid red;
     padding: 20px;
-    width: 30%;
-    float: left;
-    margin: 0px 10px;
+    width: 40%;
+    margin: 10px 0px;
 }
 
 .list{
-    float: left;
     width: 40%;
     border: 1px solid green;
     padding: 20px;
+}
+
+#form-box{
+    border: 1px solid blue;
+    padding: 20px;
+    width: 40%
 }

@@ -1,6 +1,7 @@
 $(function(){
     var model = {
         currentFriend: null,
+        formOpen: false,
         friends: [
             {
                 name: 'Jim',
@@ -35,6 +36,7 @@ $(function(){
             model.currentFriend = model.friends[0];
             friendsView.init();
             friendView.init();
+            formView.init();
         },
         getFriends: function(){
             return model.friends;
@@ -44,6 +46,15 @@ $(function(){
         },
         setCurrentFriend: function(friend){
             model.currentFriend = friend;
+        },
+        isFormOpen: function(){
+            return model.formOpen;
+        },
+        openForm: function(){
+            model.formOpen = true;
+        },
+        closeForm: function(){
+            model.formOpen = false;
         }
     };
 
@@ -90,6 +101,28 @@ $(function(){
             this.friendName.textContent = currentFriend.name;
             this.friendAge.textContent = currentFriend.age;
             this.friendEmail.textContent = currentFriend.email;
+        }
+    }
+
+    var formView = {
+        init: function(){
+            this.formView = document.getElementById('form-box');
+            this.adminButton = document.getElementById('admin-button');
+
+            this.adminButton.addEventListener('click', function(){
+                controller.openForm();
+                formView.render();
+            });
+            this.render();
+        },
+        render: function(){
+            var isOpen = controller.isFormOpen();
+
+            if (!isOpen){
+                this.formView.style.display= "none";
+            }else {
+                this.formView.style.display = "block"
+            }
         }
     }
 
