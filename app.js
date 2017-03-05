@@ -50,11 +50,8 @@ $(function(){
         isFormOpen: function(){
             return model.formOpen;
         },
-        openForm: function(){
-            model.formOpen = true;
-        },
-        closeForm: function(){
-            model.formOpen = false;
+        toggleForm: function(){
+            model.formOpen = !model.formOpen;
         }
     };
 
@@ -108,9 +105,10 @@ $(function(){
         init: function(){
             this.formView = document.getElementById('form-box');
             this.adminButton = document.getElementById('admin-button');
+            this.submitButton = document.getElementById('submit-button');
 
             this.adminButton.addEventListener('click', function(){
-                controller.openForm();
+                controller.toggleForm();
                 formView.render();
             });
             this.render();
