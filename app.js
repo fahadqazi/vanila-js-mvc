@@ -52,6 +52,9 @@ $(function(){
         },
         toggleForm: function(){
             model.formOpen = !model.formOpen;
+        },
+        addFriend: function(friend){
+            model.friends.push(friend);
         }
     };
 
@@ -106,11 +109,27 @@ $(function(){
             this.formView = document.getElementById('form-box');
             this.adminButton = document.getElementById('admin-button');
             this.submitButton = document.getElementById('submit-button');
+            this.nameInput = document.getElementById('name');
+            console.log(this.nameInput);
+            this.ageInput = document.getElementById('age');
+            this.emailInput = document.getElementById('email');
 
             this.adminButton.addEventListener('click', function(){
                 controller.toggleForm();
                 formView.render();
             });
+
+            this.submitButton.addEventListener('click', function(e){
+                e.preventDefault();
+                var friendObj = {}
+                console.log(this.nameInput)
+                friendObj['name'] = this.nameInput.value;
+                friendObj['age'] = this.ageInput.value;
+                friendObj['email'] = this.emailInput.value;
+                console.log('friend object', friendObj);
+                // controller.addFriend(friendObj);
+
+            })
             this.render();
         },
         render: function(){
